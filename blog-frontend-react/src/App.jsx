@@ -10,6 +10,14 @@ import BlogDetail from "./components/BlogDetail.jsx";
 import SignUp from "./components/SignUp.jsx";
 import ProfileDetail from "./components/ProfileDetail.jsx";
 import Setting from "./components/Setting.jsx";
+import AdminLandingPage from "./admin/LandingPage.jsx";
+import AdminProtectedRoute from "./admin/ProtectedRoute.jsx";
+import AdminRootLayout from "./admin/layouts/root-layout.jsx";
+import Dashboard from "./admin/Dashboard.jsx";
+import PostPage from "./admin/PostPage.jsx";
+import EditPost from "./admin/EditPost.jsx";
+import UsersPage from "./admin/UsersPage.jsx";
+import CommentsPage from "./admin/CommentsPage.jsx";
 
 function App() {
   return (
@@ -33,6 +41,16 @@ function App() {
         </Route>
         <Route path="/sign-in" element={<Login />}></Route>
         <Route path="/sign-up" element={<SignUp />}></Route>
+        <Route path="/admin/login" element={<AdminLandingPage />} />
+        <Route path="/admin" element={<AdminRootLayout />}>
+          <Route element={<AdminProtectedRoute />}>
+            <Route index element={<Dashboard />} />
+            <Route path="posts" element={<PostPage />} />
+            <Route path="posts/edit/:id" element={<EditPost />} />
+            <Route path="users" element={<UsersPage />} />
+            <Route path="comments" element={<CommentsPage />} />
+          </Route>
+        </Route>
       </Routes>
     </>
   );
