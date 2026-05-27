@@ -38,7 +38,7 @@ const userController = {
 
       const token = jwt.sign(
         { id: user.id, email: user.email },
-        process.env.JWT_SECRET,
+        process.env.blog2_JWT_SECRET,
         { expiresIn: "1h" }
       );
 
@@ -76,7 +76,7 @@ const userController = {
 
       const token = jwt.sign(
         { id: user.id, email: user.email },
-        process.env.JWT_SECRET,
+        process.env.blog2_JWT_SECRET,
         { expiresIn: "7d" }
       );
 

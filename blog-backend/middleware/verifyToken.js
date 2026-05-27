@@ -14,7 +14,7 @@ function verifyToken(req, res, next) {
     req.token = bearerToken;
 
     // Verify the token
-    jwt.verify(bearerToken, process.env.JWT_SECRET, (err, authData) => {
+    jwt.verify(bearerToken, process.env.blog2_JWT_SECRET, (err, authData) => {
       if (err) {
         return res.sendStatus(403); // Forbidden if token is invalid
       }

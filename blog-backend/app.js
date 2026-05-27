@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-const port = 8080;
+const port = process.env.blog2_PORT || 8080;
 const cors = require("cors");
 const postRoutes = require("./routes/postRoutes");
 const userRoutes = require("./routes/userRoutes");
@@ -24,7 +24,7 @@ app.use("/api/comments", commentRoutes);
 app.use("/api/categories", categoryRoutes);
 app.use("/api/admin", adminRoutes);
 
-app.get("*", (req, res) => {
+app.get("*splat", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
